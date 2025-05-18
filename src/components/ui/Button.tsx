@@ -10,6 +10,7 @@ export interface ButtonProps {
   endIcon?: React.ReactNode;
   icon?: React.ReactNode;
   className?: string;
+  loading? :boolean;
 }
 
 export const Button = ({
@@ -19,6 +20,7 @@ export const Button = ({
   onClick,
   startIcon,
   endIcon,
+  loading,
   className = "",
 }: ButtonProps) => {
   
@@ -39,7 +41,7 @@ export const Button = ({
   const buttonClasses = `${defaultStyles} ${sizeClasses[size]} ${variantStyles[variant]} ${className}`;
 
   return (
-    <button className={buttonClasses} onClick={onClick}>
+    <button className={`${buttonClasses} ${loading ? "opacity-45" : ""}`} onClick={onClick} >
       {startIcon ? <div className='pt-1 pr-2'>{startIcon}</div>:null}
       {text}
       {endIcon ? <div className='pr-2'>{endIcon}</div>:null}
